@@ -1,0 +1,27 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe game",
+  "main": "game.js",
+  "scripts": {
+    "test": "standard",
+    "build": "browserify game.js --outfile game.dist.js --transform babelify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caalberts/wdi-sg-playground/tree/master/tictactoe"
+  },
+  "keywords": [
+    "tictactoe",
+    "game"
+  ],
+  "author": "Albert",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-stage-0": "^6.1.2",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "standard": "^5.3.1"
+  }
+}
