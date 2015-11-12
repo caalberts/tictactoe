@@ -4,9 +4,13 @@
   "description": "Tic Tac Toe game",
   "main": "game.js",
   "scripts": {
-    "start": "npm run build && http-server game",
+    "start": "npm run clean && npm run build && http-server game",
     "test": "standard",
-    "build": "browserify game/game.js --outfile game/game.dist.js --transform babelify"
+    "clean": "rm -rf dist",
+    "build": "mkdir dist && npm run build-html && npm run build-css && npm run build-js",
+    "build-html": "cp game/index.html dist/index.html",
+    "build-css": "cp game/game.css dist/game.css",
+    "build-js": "browserify game/game.js --outfile dist/game.js --transform babelify"
   },
   "repository": {
     "type": "git",
