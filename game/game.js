@@ -19,6 +19,7 @@ function resetBoard () {
   tiles.forEach(tile => tile.textContent = '')
   reset.classList.add('hidden')
   body.addEventListener('click', tictactoe)
+  body.addEventListener('touchend', tictactoe)
 }
 
 function tictactoe (event) {
