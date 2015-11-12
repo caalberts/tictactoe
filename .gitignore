@@ -1,1 +1,3 @@
 *.dist.js
+*.log
+node_modules/

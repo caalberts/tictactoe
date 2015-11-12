@@ -1,6 +1,6 @@
 body {
-  background: lavender;
-
+  background: dodgerblue;
+  font-family: sans-serif;
 }
 .status-bar {
   flex-direction: row;

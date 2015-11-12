@@ -4,12 +4,13 @@
   "description": "Tic Tac Toe game",
   "main": "game.js",
   "scripts": {
+    "start": "npm run build && http-server game",
     "test": "standard",
-    "build": "browserify game.js --outfile game.dist.js --transform babelify"
+    "build": "browserify game/game.js --outfile game/game.dist.js --transform babelify"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/caalberts/wdi-sg-playground/tree/master/tictactoe"
+    "url": "https://github.com/caalberts/tictactoe"
   },
   "keywords": [
     "tictactoe",
@@ -22,6 +23,7 @@
     "babel-preset-stage-0": "^6.1.2",
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
+    "http-server": "^0.8.5",
     "standard": "^5.3.1"
   }
 }
