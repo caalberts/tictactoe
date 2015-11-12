@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Tic Tac Toe</title>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="game.css">
 
   </head>
   <body>
     <div class="container">
-      <main class="board-panel">
+      <main>
         <div class="title">
           <h1>Tic Tac Toe</h1>
         </div>
@@ -29,21 +30,21 @@
             <div class="tile r3 c3" id="9"></div>
           </div>
         </div>
-        <div class="win">
-          <button type="button" class="play-again" name="play-again" disabled>Play again</button>
-        </div>
       </main>
-      <aside class="status-panel">
-        <h2 class='status-text'></h2>
+      <aside>
+        <div class="sidebar-header">
+          <h2 class='status-text'></h2>
+        </div>
         <div class="score-board">
           <h2 class='score-board-title'>Scoreboard</h2>
-          <p class='score'>X: <span class="score-x"></span></p>
-          <p class='score'>Y: <span class="score-y"></span></p>
+          <p class='score score-player-name'><span>X</span><span>Y</span></p>
+          <p class='score'><span class="score-x"></span><span class="score-y"></span></p>
+        </div>
+        <div class="button-frame">
+          <button type="button" class="play-again button-on" name="play-again">PLAY AGAIN</button>
         </div>
       </aside>
-      <footer>
 
-      </footer>
     </div>
     <script src="game.js"></script>
   </body>

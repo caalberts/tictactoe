@@ -12,23 +12,29 @@ var score = {
 }
 
 updateScore()
-update.textContent = player ? 'X\'s turn' : 'O\'s turn'
 resetBoard()
-
-playAgain.addEventListener('click', resetBoard)
 
 function resetBoard () {
   moves = 1
   winner = ''
+  update.textContent = player ? 'X\'s turn' : 'O\'s turn'
+  if (player) {
+    document.body.classList.add('x')
+  } else {
+    document.body.classList.add('o')
+  }
   tiles.forEach(tile => {
     tile.textContent = ''
+    tile.classList.add('active')
     tile.addEventListener('click', tictactoe)
   })
+  playAgain.classList.toggle('button-on')
 }
 
 function disableBoard () {
   tiles.forEach(tile => {
     tile.removeEventListener('click', tictactoe)
+    tile.classList.remove('active')
   })
 }
 
@@ -42,7 +48,8 @@ function tictactoe (event) {
   if (!tile.className.includes('tile')) return
   if (tile.textContent) return
   tile.textContent = player ? 'X' : 'O'
-  // find winner by checking tiles for 'X' and 'O'
+  tile.removeEventListener('click', tictactoe)
+  tile.classList.remove('active')
   winner = findWinner()
   if (winner) {
     update.textContent = winner + ' wins!'
@@ -55,13 +62,20 @@ function tictactoe (event) {
     }
     disableBoard()
     updateScore()
-    playAgain.disabled = false
+    playAgain.addEventListener('click', resetBoard)
+    playAgain.classList.toggle('button-on')
   } else if (moves === 9) {
     // it's a tie
     update.textContent = 'It\'s a tie!'
+    disableBoard()
+    updateScore()
+    playAgain.addEventListener('click', resetBoard)
+    playAgain.classList.toggle('button-on')
   } else {
     moves = moves + 1
     player = !player
+    document.body.classList.toggle('x')
+    document.body.classList.toggle('o')
     update.textContent = player ? 'X\'s turn' : 'O\'s turn'
   }
 }
