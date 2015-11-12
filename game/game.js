@@ -32,6 +32,8 @@ function resetBoard () {
 }
 
 function disableBoard () {
+  document.body.classList.remove('x')
+  document.body.classList.remove('o')
   tiles.forEach(tile => {
     tile.removeEventListener('click', tictactoe)
     tile.classList.remove('active')
