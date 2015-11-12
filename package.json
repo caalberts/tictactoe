@@ -4,7 +4,7 @@
   "description": "Tic Tac Toe game",
   "main": "game.js",
   "scripts": {
-    "start": "npm run clean && npm run build && http-server game",
+    "start": "npm run clean && npm run build && http-server dist",
     "test": "standard",
     "clean": "rm -rf dist",
     "build": "mkdir dist && npm run build-html && npm run build-css && npm run build-js",
