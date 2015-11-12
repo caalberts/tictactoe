@@ -1,44 +1,68 @@
 // select HTML elements and store them in variables
-var body = document.querySelector('body') // body element to listen for clicks
-var title = document.querySelector('.title') // title bar
+var update = document.querySelector('.status-text') // status bar
 var tiles = Array.from(document.querySelectorAll('.tile')) // monitor tiles for 'X' and 'O'
-var reset = document.querySelector('.reset') // reset button to reset the game
+var playAgain = document.querySelector('.play-again')
 // create variables for the tic tac toe game
-var player, moves, winner
+var player = true
+var moves = 1
+var winner = ''
+var score = {
+  x: 0,
+  y: 0
+}
+
+updateScore()
+update.textContent = player ? 'X\'s turn' : 'O\'s turn'
 resetBoard()
 
-// Event listener on reset button
-reset.addEventListener('click', resetBoard)
+playAgain.addEventListener('click', resetBoard)
 
-// function to reset the game
 function resetBoard () {
-  player = true
   moves = 1
   winner = ''
-  title.textContent = player ? 'X\'s turn' : 'O\'s turn'
-  tiles.forEach(tile => tile.textContent = '')
-  reset.classList.add('hidden')
-  body.addEventListener('click', tictactoe)
+  tiles.forEach(tile => {
+    tile.textContent = ''
+    tile.addEventListener('click', tictactoe)
+  })
+}
+
+function disableBoard () {
+  tiles.forEach(tile => {
+    tile.removeEventListener('click', tictactoe)
+  })
+}
+
+function updateScore () {
+  document.querySelector('.score-x').textContent = score.x
+  document.querySelector('.score-y').textContent = score.y
 }
 
 function tictactoe (event) {
   var tile = event.target
-  if (tile.className !== 'tile') return
+  if (!tile.className.includes('tile')) return
   if (tile.textContent) return
   tile.textContent = player ? 'X' : 'O'
   // find winner by checking tiles for 'X' and 'O'
   winner = findWinner()
   if (winner) {
-    title.textContent = winner + ' wins!'
-    body.removeEventListener('click', tictactoe)
-    reset.classList.remove('hidden')
+    update.textContent = winner + ' wins!'
+    if (winner === 'X') {
+      score.x += 1
+      player = false
+    } else {
+      score.y += 1
+      player = true
+    }
+    disableBoard()
+    updateScore()
+    playAgain.disabled = false
   } else if (moves === 9) {
     // it's a tie
-    title.textContent = 'It\'s a tie!'
+    update.textContent = 'It\'s a tie!'
   } else {
     moves = moves + 1
     player = !player
-    title.textContent = player ? 'X\'s turn' : 'O\'s turn'
+    update.textContent = player ? 'X\'s turn' : 'O\'s turn'
   }
 }
 
