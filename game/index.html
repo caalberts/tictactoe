@@ -8,42 +8,40 @@
   </head>
   <body>
     <div class="container">
-      <header class="header">
-        <h1>Tic Tac Toe</h1>
-      </header>
-      <main>
-        <div class="board-panel">
-          <div class="board">
-            <div class="row top-row">
-              <div class="tile r1 c1" id="1"></div>
-              <div class="tile r1 c2" id="2"></div>
-              <div class="tile r1 c3" id="3"></div>
-            </div>
-            <div class="row middle-row">
-              <div class="tile r2 c1" id="4"></div>
-              <div class="tile r2 c2" id="5"></div>
-              <div class="tile r2 c3" id="6"></div>
-            </div>
-            <div class="row bottom-row">
-              <div class="tile r3 c1" id="7"></div>
-              <div class="tile r3 c2" id="8"></div>
-              <div class="tile r3 c3" id="9"></div>
-            </div>
+      <main class="board-panel">
+        <div class="title">
+          <h1>Tic Tac Toe</h1>
+        </div>
+        <div class="board">
+          <div class="row top-row">
+            <div class="tile r1 c1" id="1"></div>
+            <div class="tile r1 c2" id="2"></div>
+            <div class="tile r1 c3" id="3"></div>
           </div>
-          <div class="win">
-            <button type="button" class="play-again" name="play-again">Play again</button>
+          <div class="row middle-row">
+            <div class="tile r2 c1" id="4"></div>
+            <div class="tile r2 c2" id="5"></div>
+            <div class="tile r2 c3" id="6"></div>
+          </div>
+          <div class="row bottom-row">
+            <div class="tile r3 c1" id="7"></div>
+            <div class="tile r3 c2" id="8"></div>
+            <div class="tile r3 c3" id="9"></div>
           </div>
         </div>
-        <div class="status-panel">
-          <h2 class='status-text'></h2>
-          <div class="score-board">
-            <h2 class='score-board-title'>Scoreboard</h2>
-            <p class='score'>X: <span class="score-x"></span></p>
-            <p class='score'>Y: <span class="score-y"></span></p>
-          </div>
-          <button class='reset' type="button" name="Reset">Restart</button>
+        <div class="win">
+          <button type="button" class="play-again" name="play-again" disabled>Play again</button>
         </div>
       </main>
+      <aside class="status-panel">
+        <h2 class='status-text'></h2>
+        <div class="score-board">
+          <h2 class='score-board-title'>Scoreboard</h2>
+          <p class='score'>X: <span class="score-x"></span></p>
+          <p class='score'>Y: <span class="score-y"></span></p>
+        </div>
+        <button class='reset' type="button" name="Reset">Restart</button>
+      </aside>
       <footer>
 
       </footer>
