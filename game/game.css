@@ -66,6 +66,9 @@ aside {
   content: "O";
   color: white;
 }
+.tile-off {
+  background: black;
+}
 .c1 {
   border-left: 5px solid black;
   border-right: 5px solid black;

@@ -5,10 +5,9 @@ var playAgain = document.querySelector('.play-again')
 // create variables for the tic tac toe game
 var player = true
 var moves = 1
-var winner = ''
 var score = {
   x: 0,
-  y: 0
+  o: 0
 }
 
 updateScore()
@@ -16,15 +15,15 @@ resetBoard()
 
 function resetBoard () {
   moves = 1
-  winner = ''
-  update.textContent = player ? 'X\'s turn' : 'O\'s turn'
   if (player) {
     document.body.classList.add('x')
   } else {
     document.body.classList.add('o')
   }
+  update.textContent = document.body.className.toUpperCase() + '\'s turn'
   tiles.forEach(tile => {
     tile.textContent = ''
+    tile.classList.remove('tile-off')
     tile.classList.add('active')
     tile.addEventListener('click', tictactoe)
   })
@@ -42,26 +41,30 @@ function disableBoard () {
 
 function updateScore () {
   document.querySelector('.score-x').textContent = score.x
-  document.querySelector('.score-y').textContent = score.y
+  document.querySelector('.score-o').textContent = score.o
 }
 
 function tictactoe (event) {
   var tile = event.target
+  var currentPlayer = document.body.className.toUpperCase()
   if (!tile.className.includes('tile')) return
   if (tile.textContent) return
-  tile.textContent = player ? 'X' : 'O'
+  tile.textContent = currentPlayer
   tile.removeEventListener('click', tictactoe)
   tile.classList.remove('active')
-  winner = findWinner()
+  var winner = findWinner()
   if (winner) {
-    update.textContent = winner + ' wins!'
-    if (winner === 'X') {
+    update.textContent = currentPlayer + ' wins!'
+    if (currentPlayer === 'X') {
       score.x += 1
       player = false
     } else {
-      score.y += 1
+      score.o += 1
       player = true
     }
+    var tilesOff = tiles.filter((tile, index) => winner.indexOf(index) < 0)
+    tilesOff.forEach(tileOff => tileOff.classList.add('tile-off'))
+
     disableBoard()
     updateScore()
     playAgain.addEventListener('click', resetBoard)
@@ -78,7 +81,7 @@ function tictactoe (event) {
     player = !player
     document.body.classList.toggle('x')
     document.body.classList.toggle('o')
-    update.textContent = player ? 'X\'s turn' : 'O\'s turn'
+    update.textContent = document.body.className.toUpperCase() + '\'s turn'
   }
 }
 
@@ -90,11 +93,8 @@ function findWinner () {
   var winningCombination = [ [0, 1, 2], [3, 4, 5], [6, 7, 8],
                              [0, 3, 6], [1, 4, 7], [2, 5, 8],
                              [0, 4, 8], [2, 4, 6]]
-
-  if (winningCombination.some(combo =>
-    combo.every(tileIndex =>
-      tiles[tileIndex].textContent === 'X'))) return 'X'
-  else if (winningCombination.some(combo =>
-    combo.every(tileIndex =>
-      tiles[tileIndex].textContent === 'O'))) return 'O'
+  var winningSet = winningCombination.findIndex(combo =>
+           combo.every(tileIndex =>
+             tiles[tileIndex].textContent === document.body.className.toUpperCase()))
+  return (winningSet < 0) ? false : winningCombination[winningSet]
 }
