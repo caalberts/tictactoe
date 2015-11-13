@@ -1,5 +1,8 @@
 # Tic Tac Toe
 
+[![Travis Build Status](https://img.shields.io/travis/caalberts/tictactoe.svg?style=flat-square)](https://travis-ci.org/caalberts/tictactoe)
+
+
 Created a front-end tic tac toe game.
 
 Lessons applied in making this game:
