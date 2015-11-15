@@ -62,8 +62,7 @@ function tictactoe (event) {
       score.o += 1
       player = true
     }
-    var tilesOff = tiles.filter((tile, index) => winner.indexOf(index) < 0)
-    tilesOff.forEach(tileOff => tileOff.classList.add('tile-off'))
+    tiles.filter((tile, index) => winner.indexOf(index) < 0).forEach(tileOff => tileOff.classList.add('tile-off'))
 
     disableBoard()
     updateScore()
