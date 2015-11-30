@@ -4,7 +4,7 @@
 
 Created a front-end tic tac toe game.
 ![Tic Tac Toe](/tictactoe.png)
-Play the game [here](http://tictactoe.caalberts.xyz)
+Play the game [here](https://tictactoe.caalberts.xyz)
 
 Lessons applied in making this game:
 - Tic tac toe board in HTML
